@@ -1,6 +1,7 @@
 plugins {
     id 'groovy'
     id 'jacoco'
+    id "org.sonarqube" version "3.5.0.2730"
 }
 
 group 'com.epam.engx'
@@ -34,4 +35,11 @@ jacoco {
 }
 jacocoTestReport {
     dependsOn test
+}
+sonarqube {
+    properties {
+        property "sonar.projectKey", "rabestro_press-the-button"
+        property "sonar.organization", "rabestro"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
