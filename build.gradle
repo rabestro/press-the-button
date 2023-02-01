@@ -1,5 +1,6 @@
 plugins {
     id 'groovy'
+    id 'jacoco'
 }
 
 group 'com.epam.engx'
@@ -10,10 +11,27 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
+
+    // Spock Reports
+    testCompileOnly 'com.athaydes:spock-reports:2.4.0-groovy-4.0'
+
+    // Simple Logging Facade (required for spock-reports)
+    testImplementation 'org.slf4j:slf4j-api:2.0.5'
+    testCompileOnly 'org.slf4j:slf4j-simple:2.0.5'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
 
 test {
     useJUnitPlatform()
+
+    finalizedBy jacocoTestReport
+}
+jacoco {
+    toolVersion = "0.8.7"
+}
+jacocoTestReport {
+    dependsOn test
 }
