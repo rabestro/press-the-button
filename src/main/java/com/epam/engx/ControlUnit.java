@@ -4,7 +4,7 @@ public class ControlUnit {
     private State state = State.SHUTDOWN;
 
     public void powerOn() {
-        // Program and test me!
+        // Code me!
     }
 
     public boolean isOperate() {
